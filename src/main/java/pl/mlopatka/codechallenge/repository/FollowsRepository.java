@@ -4,9 +4,9 @@ import pl.mlopatka.codechallenge.model.Following;
 
 import java.util.List;
 
-public interface FollowingRepository {
+public interface FollowsRepository {
 
     void save(Following following);
 
-    List<Following> getFollowedUsers(int userId);
+    List<String> getFollowedUsersNicknames(String nickname);
 }

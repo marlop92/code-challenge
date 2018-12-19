@@ -8,7 +8,7 @@ public interface MessagesRepository {
 
     void save(Message message);
 
-    List<Message> getUserMessages(int userId);
+    List<Message> getUserMessages(String nickname);
 
-    List<Message> getUsersMessages(List<Integer> userIds);
+    List<Message> getUsersMessages(List<String> usersNicknames);
 }

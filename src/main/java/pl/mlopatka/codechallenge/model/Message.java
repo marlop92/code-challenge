@@ -6,7 +6,7 @@ public class Message {
 
     private int id;
     private LocalDateTime timestamp;
-    private int authorId;
+    private String authorNickname;
     private String content;
 
 

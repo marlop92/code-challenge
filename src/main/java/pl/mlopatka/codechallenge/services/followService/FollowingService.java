@@ -7,8 +7,8 @@ import java.util.List;
 public interface FollowingService {
 
     //UC 3
-    void updateFollowersList(int followingId, boolean followingUser);
+    void updateFollowStatus(String followerNickname, String followedUserNickname, boolean follow);
 
     //UC 4
-    List<Following> getFollowedUsersList();
+    List<String> getFollowedUsersNicknames();
 }

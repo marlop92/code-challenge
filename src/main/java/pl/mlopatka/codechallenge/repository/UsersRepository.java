@@ -2,9 +2,11 @@ package pl.mlopatka.codechallenge.repository;
 
 import pl.mlopatka.codechallenge.model.User;
 
+import java.util.Optional;
+
 public interface UsersRepository {
 
     void save(User user);
 
-    User getUser(String nickname);
+    Optional<User> findUser(String nickname);
 }
