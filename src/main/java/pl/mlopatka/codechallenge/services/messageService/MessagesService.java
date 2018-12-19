@@ -10,8 +10,8 @@ public interface MessagesService {
     void create(Message message);
 
     //UC 2
-    List<Message> getCurrentUserMessages();
+    List<Message> getMessages(String nickname);
 
     //UC 4
-    List<Message> getFollowedUsersMessages();
+    List<Message> getMessages(List<String> nicknames);
 }

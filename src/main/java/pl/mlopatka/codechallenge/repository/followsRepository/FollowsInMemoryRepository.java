@@ -2,17 +2,23 @@ package pl.mlopatka.codechallenge.repository.followsRepository;
 
 import pl.mlopatka.codechallenge.model.Following;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class FollowsInMemoryRepository implements FollowsRepository{
 
-    private List<Following> followsList = new ArrayList<>();
+    private Set<Following> followsList = new HashSet<>();
+    private int idCounter = 0;
 
     @Override
-    public void save(Following following) {
-        followsList.add(following);
+    public void updateStatus(String followerNickname, String followedNickname, boolean follow) {
+        if(follow){
+            followsList.add(new Following(idCounter++, followerNickname, followedNickname));
+        } else {
+            followsList.remove(new Following(followerNickname, followedNickname));
+        }
     }
 
     @Override

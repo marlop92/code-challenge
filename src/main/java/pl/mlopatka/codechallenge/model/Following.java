@@ -11,6 +11,11 @@ public class Following {
     public Following() {
     }
 
+    public Following(String followerNickname, String followingNickname) {
+        this.followerNickname = followerNickname;
+        this.followingNickname = followingNickname;
+    }
+
     public Following(int id, String followerNickname, String followingNickname) {
         this.id = id;
         this.followerNickname = followerNickname;
@@ -34,18 +39,22 @@ public class Following {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Following following = (Following) o;
-        return id == following.id;
+        return followerNickname.equals(following.followerNickname) &&
+                followingNickname.equals(following.followingNickname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(followerNickname, followingNickname);
     }
 
     @Override
     public String toString() {
         return "Following{" +
                 "id=" + id +
+                ", followerNickname='" + followerNickname + '\'' +
+                ", followingNickname='" + followingNickname + '\'' +
                 '}';
     }
+
 }

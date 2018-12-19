@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface FollowsRepository {
 
-    void save(Following following);
+    void updateStatus(String followerNickname, String followedNickname, boolean follow);
 
     List<String> getFollowedUsersNicknames(String nickname);
 }

@@ -10,5 +10,5 @@ public interface UserService {
     void create(User user);
 
     //UC 1 i 4
-    Optional<User> getUser(int userId);
+    boolean userExists(String nickname);
 }

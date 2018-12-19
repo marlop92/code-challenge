@@ -8,11 +8,13 @@ import java.util.stream.Collectors;
 public class MessagesInMemoryRepository implements MessagesRepository {
 
     private Map<String, List<Message>> messages = new HashMap<>();
+    private int idCounter = 0;
 
     @Override
     public void save(Message message) {
         messages.computeIfAbsent(message.getAuthorNickname(), (key) -> messages.put(key, new ArrayList<>()));
         messages.computeIfPresent(message.getAuthorNickname(), (key, messageList) -> {
+            message.setId(idCounter++);
             messageList.add(message);
             return messageList;
         });
