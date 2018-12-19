@@ -1,4 +1,4 @@
-package pl.mlopatka.codechallenge.repository;
+package pl.mlopatka.codechallenge.repository.messagesRepository;
 
 import pl.mlopatka.codechallenge.model.Message;
 
