@@ -23,7 +23,9 @@ public class FollowsInMemoryRepository implements FollowsRepository{
 
     @Override
     public List<String> getFollowedUsersNicknames(String nickname) {
-        return followsList.stream().map(following -> following.getFollowerNickname())
-                .filter(followerNickname -> followerNickname.equals(nickname)).collect(Collectors.toList());
+        return followsList.stream()
+                .filter(following -> following.getFollowerNickname().equals(nickname))
+                .map(following -> following.getFollowingNickname())
+                .collect(Collectors.toList());
     }
 }

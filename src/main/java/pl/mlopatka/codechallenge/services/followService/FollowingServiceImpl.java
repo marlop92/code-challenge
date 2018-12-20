@@ -18,7 +18,7 @@ public class FollowingServiceImpl implements FollowingService {
     }
 
     @Override
-    public List<String> getFollowedUsersNicknames() {
-        return null;
+    public List<String> getFollowedUsersNicknames(String nickname) {
+        return followsRepository.getFollowedUsersNicknames(nickname);
     }
 }

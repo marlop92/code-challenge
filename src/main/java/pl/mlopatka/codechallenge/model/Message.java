@@ -1,5 +1,6 @@
 package pl.mlopatka.codechallenge.model;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -8,29 +9,43 @@ public class Message {
     private int id;
     private LocalDateTime timestamp;
     private String authorNickname;
+    @Size(max = 140)
     private String content;
 
     public Message() {
+        this.timestamp = LocalDateTime.now();
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public LocalDateTime getTimestamp() {
         return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getAuthorNickname() {
         return authorNickname;
     }
 
+    public void setAuthorNickname(String authorNickname) {
+        this.authorNickname = authorNickname;
+    }
+
     public String getContent() {
         return content;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override
