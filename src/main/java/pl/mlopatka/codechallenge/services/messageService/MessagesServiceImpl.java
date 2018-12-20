@@ -4,6 +4,8 @@ import pl.mlopatka.codechallenge.model.Message;
 import pl.mlopatka.codechallenge.model.User;
 import pl.mlopatka.codechallenge.repository.messagesRepository.MessagesRepository;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -22,11 +24,17 @@ public class MessagesServiceImpl implements MessagesService {
 
     @Override
     public List<Message> getMessages(final User user) {
-        return messagesRepository.getUserMessages(user);
+        List<Message> messages = messagesRepository.getUserMessages(user);
+        Collections.reverse(messages);
+
+        return messages;
     }
 
     @Override
     public List<Message> getMessages(final Set<String> nicknames) {
-        return messagesRepository.getUsersMessages(nicknames);
+        List<Message> messages = messagesRepository.getUsersMessages(nicknames);
+        messages.sort(Comparator.comparing(Message::getTimestamp).reversed());
+
+        return messages;
     }
 }
