@@ -74,6 +74,8 @@ public class ApiController {
     @PutMapping("/follow")
     public void updateFollowStatus(@Valid @RequestBody FollowStatusDto followStatus) {
         User followedUser = new User(followStatus.getFollowedUserNickname());
+        User followingUser = new User(followStatus.getFollowerNickname());
+        userService.validateUser(followingUser);
         userService.validateUser(followedUser);
         followStatusService.updateFollowStatus(followStatus);
     }
