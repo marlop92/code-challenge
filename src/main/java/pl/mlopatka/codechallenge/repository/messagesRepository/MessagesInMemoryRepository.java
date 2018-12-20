@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MessagesInMemoryRepository implements MessagesRepository {
 
@@ -40,7 +41,7 @@ public class MessagesInMemoryRepository implements MessagesRepository {
     }
 
     @Override
-    public List<Message> getUsersMessages(final List<String> usersNicknames) {
+    public List<Message> getUsersMessages(final Set<String> usersNicknames) {
         List<Message> resultList = new ArrayList<>();
         messages.entrySet().stream()
                 .filter(entry -> usersNicknames.contains(entry.getKey()))

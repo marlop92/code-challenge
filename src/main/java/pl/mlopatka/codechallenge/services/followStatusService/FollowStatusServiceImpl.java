@@ -3,7 +3,7 @@ package pl.mlopatka.codechallenge.services.followStatusService;
 import pl.mlopatka.codechallenge.model.FollowStatus;
 import pl.mlopatka.codechallenge.repository.followStatusRepository.FollowStatusRepository;
 
-import java.util.List;
+import java.util.Set;
 
 public class FollowStatusServiceImpl implements FollowStatusService {
 
@@ -19,7 +19,7 @@ public class FollowStatusServiceImpl implements FollowStatusService {
     }
 
     @Override
-    public List<String> getFollowedUsersNicknames(final String nickname) {
+    public Set<String> getFollowedUsersNicknames(final String nickname) {
         return followStatusRepository.getFollowedUsersNicknames(nickname);
     }
 }

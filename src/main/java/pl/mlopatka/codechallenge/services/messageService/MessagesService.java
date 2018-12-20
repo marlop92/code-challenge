@@ -4,6 +4,7 @@ import pl.mlopatka.codechallenge.model.Message;
 import pl.mlopatka.codechallenge.model.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface MessagesService {
 
@@ -11,5 +12,5 @@ public interface MessagesService {
 
     List<Message> getMessages(User nickname);
 
-    List<Message> getMessages(List<String> nicknames);
+    List<Message> getMessages(Set<String> nicknames);
 }

@@ -16,7 +16,19 @@ public class Message {
     private String content;
 
     public Message() {
-        this.timestamp = LocalDateTime.now();
+        timestamp = LocalDateTime.now();
+    }
+
+    public Message(final Integer id, @NotNull @Size(min = 1) final String authorNickname, @Size(max = 140) final String content) {
+        this.id = id;
+        this.authorNickname = authorNickname;
+        this.content = content;
+    }
+
+    public Message(@NotNull @Size(min = 1) final String authorNickname, @Size(max = 140) final String content) {
+        this.authorNickname = authorNickname;
+        this.content = content;
+        timestamp = LocalDateTime.now();
     }
 
     public Integer getId() {

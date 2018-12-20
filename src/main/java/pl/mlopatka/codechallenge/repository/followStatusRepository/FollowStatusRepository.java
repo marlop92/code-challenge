@@ -2,11 +2,11 @@ package pl.mlopatka.codechallenge.repository.followStatusRepository;
 
 import pl.mlopatka.codechallenge.model.FollowStatus;
 
-import java.util.List;
+import java.util.Set;
 
 public interface FollowStatusRepository {
 
     void updateFollowStatus(FollowStatus followStatus);
 
-    List<String> getFollowedUsersNicknames(String nickname);
+    Set<String> getFollowedUsersNicknames(String nickname);
 }

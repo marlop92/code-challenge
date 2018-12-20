@@ -21,6 +21,7 @@ import pl.mlopatka.codechallenge.services.userService.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @RequestMapping("/api")
 @ResponseBody
@@ -80,7 +81,7 @@ public class ApiController {
     public List<Message> getFollowedUsersMessages(@RequestParam("nickname") String nickname) {
         User user = new User(nickname);
         userService.validateUser(user);
-        List<String> followedUsersNicknames = followStatusService.getFollowedUsersNicknames(nickname);
+        Set<String> followedUsersNicknames = followStatusService.getFollowedUsersNicknames(nickname);
         return messagesService.getMessages(followedUsersNicknames);
     }
 

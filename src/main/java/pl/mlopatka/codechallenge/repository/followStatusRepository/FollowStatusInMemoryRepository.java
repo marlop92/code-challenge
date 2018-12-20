@@ -33,10 +33,10 @@ public class FollowStatusInMemoryRepository implements FollowStatusRepository {
     }
 
     @Override
-    public List<String> getFollowedUsersNicknames(final String nickname) {
+    public Set<String> getFollowedUsersNicknames(final String nickname) {
         return followStatusesList.stream()
                 .filter(following -> following.getFollowerNickname().equals(nickname))
                 .map(FollowStatus::getFollowedUserNickname)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 }

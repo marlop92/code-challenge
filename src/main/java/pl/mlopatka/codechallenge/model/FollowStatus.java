@@ -15,6 +15,12 @@ public class FollowStatus {
     public FollowStatus() {
     }
 
+    public FollowStatus(@NotNull final String followerNickname, @NotNull final String followedUserNickname, final boolean follow) {
+        this.followerNickname = followerNickname;
+        this.followedUserNickname = followedUserNickname;
+        this.follow = follow;
+    }
+
     public Integer getId() {
         return id;
     }

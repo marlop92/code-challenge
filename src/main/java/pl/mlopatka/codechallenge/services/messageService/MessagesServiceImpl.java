@@ -5,6 +5,7 @@ import pl.mlopatka.codechallenge.model.User;
 import pl.mlopatka.codechallenge.repository.messagesRepository.MessagesRepository;
 
 import java.util.List;
+import java.util.Set;
 
 public class MessagesServiceImpl implements MessagesService {
 
@@ -25,7 +26,7 @@ public class MessagesServiceImpl implements MessagesService {
     }
 
     @Override
-    public List<Message> getMessages(final List<String> nicknames) {
+    public List<Message> getMessages(final Set<String> nicknames) {
         return messagesRepository.getUsersMessages(nicknames);
     }
 }
