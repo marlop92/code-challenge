@@ -1,15 +1,15 @@
 package pl.mlopatka.codechallenge.services.userService;
 
 import org.springframework.util.Assert;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import pl.mlopatka.codechallenge.exceptions.UserNotFoundException;
 import pl.mlopatka.codechallenge.model.User;
 import pl.mlopatka.codechallenge.repository.usersRepository.UsersRepository;
 
-import java.util.Optional;
-
 public class UserServiceImpl implements UserService {
 
     public static final String USER_NICKNAME_NULL_ERROR_MSG = "User nickname can't be null";
+    public static final String NULL_USER_EXCEPTION_MSG = "User can't be null";
     private final UsersRepository usersRepository;
 
     public UserServiceImpl(UsersRepository usersRepository) {
@@ -17,22 +17,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(User user) {
+    public void create(final User user) {
         usersRepository.save(user);
     }
 
     @Override
-    public boolean userExists(String nickname) {
-        Assert.notNull(nickname, USER_NICKNAME_NULL_ERROR_MSG);
-
-        return usersRepository.findUser(nickname);
+    public boolean userExists(final User nickname) {
+        return usersRepository.exists(nickname);
     }
 
     @Override
-    public void validateUser(String nickname) {
-        Assert.notNull(nickname, USER_NICKNAME_NULL_ERROR_MSG);
+    public void validateUser(final User user) {
+        Assert.notNull(user, NULL_USER_EXCEPTION_MSG);
+        Assert.hasLength(user.getNickname(), USER_NICKNAME_NULL_ERROR_MSG);
 
-        if(!usersRepository.findUser(nickname)){
+        if(!usersRepository.exists(user)){
             throw new UserNotFoundException();
         }
     }

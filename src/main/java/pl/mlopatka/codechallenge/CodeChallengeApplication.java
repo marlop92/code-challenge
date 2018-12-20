@@ -1,11 +1,13 @@
 package pl.mlopatka.codechallenge;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Import;
 import pl.mlopatka.codechallenge.configurations.GlobalConfiguration;
 
-@SpringBootApplication
+@SpringBootConfiguration
+@EnableAutoConfiguration
 @Import(GlobalConfiguration.class)
 public class CodeChallengeApplication {
 

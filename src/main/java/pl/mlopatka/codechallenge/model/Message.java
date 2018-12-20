@@ -1,13 +1,16 @@
 package pl.mlopatka.codechallenge.model;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Message {
 
-    private int id;
+    private Integer id;
     private LocalDateTime timestamp;
+    @NotNull
+    @Size(min = 1)
     private String authorNickname;
     @Size(max = 140)
     private String content;
@@ -16,11 +19,11 @@ public class Message {
         this.timestamp = LocalDateTime.now();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
