@@ -1,7 +1,7 @@
 package pl.mlopatka.codechallenge.model;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import pl.mlopatka.codechallenge.dto.MessageDto;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -9,23 +9,18 @@ public class Message {
 
     private Integer id;
     private LocalDateTime timestamp;
-    @NotNull
-    @Size(min = 1)
     private String authorNickname;
-    @Size(max = 140)
     private String content;
 
-    public Message() {
+    public Message(final int id, final MessageDto messageDto) {
+        this.id = id;
+        this.authorNickname = messageDto.getAuthorNickname();
+        this.content = messageDto.getContent();
         timestamp = LocalDateTime.now();
     }
 
-    public Message(final Integer id, @NotNull @Size(min = 1) final String authorNickname, @Size(max = 140) final String content) {
+    public Message(final Integer id, final String authorNickname, final String content) {
         this.id = id;
-        this.authorNickname = authorNickname;
-        this.content = content;
-    }
-
-    public Message(@NotNull @Size(min = 1) final String authorNickname, @Size(max = 140) final String content) {
         this.authorNickname = authorNickname;
         this.content = content;
         timestamp = LocalDateTime.now();

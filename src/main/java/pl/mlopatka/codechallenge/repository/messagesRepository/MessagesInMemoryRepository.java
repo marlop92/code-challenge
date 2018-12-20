@@ -1,5 +1,6 @@
 package pl.mlopatka.codechallenge.repository.messagesRepository;
 
+import pl.mlopatka.codechallenge.dto.MessageDto;
 import pl.mlopatka.codechallenge.model.Message;
 import pl.mlopatka.codechallenge.model.User;
 
@@ -26,11 +27,10 @@ public class MessagesInMemoryRepository implements MessagesRepository {
     }
 
     @Override
-    public void save(final Message message) {
+    public void save(final MessageDto message) {
         messages.computeIfAbsent(message.getAuthorNickname(), (key) -> messages.put(key, new ArrayList<>()));
         messages.computeIfPresent(message.getAuthorNickname(), (key, messageList) -> {
-            message.setId(idCounter++);
-            messageList.add(message);
+            messageList.add(new Message(idCounter++, message));
             return messageList;
         });
     }

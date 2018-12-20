@@ -3,6 +3,7 @@ package pl.mlopatka.codechallenge.repository.messagesRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import pl.mlopatka.codechallenge.dto.MessageDto;
 import pl.mlopatka.codechallenge.model.Message;
 import pl.mlopatka.codechallenge.model.User;
 
@@ -27,7 +28,7 @@ public class MessagesRepositoryTest {
     @Test
     public void shouldAddMessagesToList() {
         //given
-        Message message = new Message("Alan", "My_Message");
+        MessageDto message = new MessageDto("Alan", "My_Message");
 
         Map<String, List<Message>> expectedCollection = new HashMap<>();
         Message expectedMessage = new Message(0,"Alan", "My_Message");

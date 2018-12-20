@@ -1,5 +1,6 @@
 package pl.mlopatka.codechallenge.services.messageService;
 
+import pl.mlopatka.codechallenge.dto.MessageDto;
 import pl.mlopatka.codechallenge.model.Message;
 import pl.mlopatka.codechallenge.model.User;
 import pl.mlopatka.codechallenge.repository.messagesRepository.MessagesRepository;
@@ -18,7 +19,7 @@ public class MessagesServiceImpl implements MessagesService {
     }
 
     @Override
-    public void create(final Message message) {
+    public void create(final MessageDto message) {
         messagesRepository.save(message);
     }
 
