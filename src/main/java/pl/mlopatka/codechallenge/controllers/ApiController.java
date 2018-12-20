@@ -2,6 +2,7 @@ package pl.mlopatka.codechallenge.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import pl.mlopatka.codechallenge.model.Message;
 import pl.mlopatka.codechallenge.model.User;
@@ -24,6 +25,18 @@ public class ApiController {
         this.userService = userService;
         this.messagesService = messagesService;
         this.followingService = followingService;
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public RuntimeException wrongArgument(IllegalArgumentException exception){
+        throw new RuntimeException(exception.getMessage());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public RuntimeException validationFailed(MethodArgumentNotValidException exception){
+        throw new RuntimeException(exception.getMessage());
     }
 
     @ResponseStatus(HttpStatus.CREATED)
