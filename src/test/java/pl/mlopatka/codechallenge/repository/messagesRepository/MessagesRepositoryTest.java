@@ -82,15 +82,16 @@ public class MessagesRepositoryTest {
         usersNicknames.add("User");
         usersNicknames.add("Alan");
 
-        List<Message> expected = new ArrayList<>();
-        expected.add(new Message(0, "User", "User_Message"));
-        expected.add(new Message(1, "Alan", "Alan_Message"));
+
+        Message expectedMessage1 = new Message(0, "User", "User_Message");
+        Message expectedMessage2 = new Message(1, "Alan", "Alan_Message");
 
         //when
         List<Message> result = repository.getUsersMessages(usersNicknames);
 
         //than
-        Assert.assertEquals(expected, result);
+        Assert.assertTrue(result.contains(expectedMessage1));
+        Assert.assertTrue(result.contains(expectedMessage2));
     }
 
 

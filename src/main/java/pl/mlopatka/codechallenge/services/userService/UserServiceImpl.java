@@ -8,8 +8,8 @@ import pl.mlopatka.codechallenge.repository.usersRepository.UsersRepository;
 
 public class UserServiceImpl implements UserService {
 
-    public static final String USER_NICKNAME_NULL_ERROR_MSG = "User nickname can't be null";
-    public static final String NULL_USER_EXCEPTION_MSG = "User can't be null";
+    private static final String USER_NICKNAME_NULL_ERROR_MSG = "User nickname can't be null";
+    private static final String NULL_USER_EXCEPTION_MSG = "User can't be null";
     private final UsersRepository usersRepository;
 
     public UserServiceImpl(UsersRepository usersRepository) {
