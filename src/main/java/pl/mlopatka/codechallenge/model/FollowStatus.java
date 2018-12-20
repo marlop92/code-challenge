@@ -1,21 +1,28 @@
 package pl.mlopatka.codechallenge.model;
 
-import javax.validation.constraints.NotNull;
+import pl.mlopatka.codechallenge.dto.FollowStatusDto;
+
 import java.util.Objects;
 
 public class FollowStatus {
 
     private Integer id;
-    @NotNull
     private String followerNickname;
-    @NotNull
     private String followedUserNickname;
     private boolean follow;
 
     public FollowStatus() {
     }
 
-    public FollowStatus(@NotNull final String followerNickname, @NotNull final String followedUserNickname, final boolean follow) {
+    public FollowStatus(final Integer id, final FollowStatusDto followStatusDto) {
+        this.id = id;
+        this.followerNickname = followStatusDto.getFollowerNickname();
+        this.followedUserNickname = followStatusDto.getFollowedUserNickname();
+        this.follow = followStatusDto.isFollow();
+    }
+
+    public FollowStatus(final int id, final String followerNickname, final String followedUserNickname, final boolean follow) {
+        this.id = id;
         this.followerNickname = followerNickname;
         this.followedUserNickname = followedUserNickname;
         this.follow = follow;

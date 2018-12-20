@@ -1,9 +1,9 @@
 package pl.mlopatka.codechallenge.repository.followStatusRepository;
 
+import pl.mlopatka.codechallenge.dto.FollowStatusDto;
 import pl.mlopatka.codechallenge.model.FollowStatus;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -23,12 +23,14 @@ public class FollowStatusInMemoryRepository implements FollowStatusRepository {
     }
 
     @Override
-    public void updateFollowStatus(final FollowStatus followStatus) {
+    public void updateFollowStatus(final FollowStatusDto followStatus) {
         if (followStatus.isFollow()) {
-            followStatus.setId(idCounter++);
-            followStatusesList.add(followStatus);
+            followStatusesList.add(new FollowStatus(idCounter++, followStatus));
         } else {
-            followStatusesList.remove(followStatus);
+            followStatusesList.removeIf(
+                    n ->  (n.getFollowedUserNickname().equals(followStatus.getFollowedUserNickname())
+                            && (n.getFollowerNickname().equals(followStatus.getFollowerNickname()))
+                    ));
         }
     }
 

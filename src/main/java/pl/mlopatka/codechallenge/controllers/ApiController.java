@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import pl.mlopatka.codechallenge.dto.FollowStatusDto;
 import pl.mlopatka.codechallenge.dto.MessageDto;
-import pl.mlopatka.codechallenge.model.FollowStatus;
 import pl.mlopatka.codechallenge.model.Message;
 import pl.mlopatka.codechallenge.model.User;
 import pl.mlopatka.codechallenge.services.followStatusService.FollowStatusService;
@@ -72,7 +72,7 @@ public class ApiController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/follow")
-    public void updateFollowStatus(@Valid @RequestBody FollowStatus followStatus) {
+    public void updateFollowStatus(@Valid @RequestBody FollowStatusDto followStatus) {
         User followedUser = new User(followStatus.getFollowedUserNickname());
         userService.validateUser(followedUser);
         followStatusService.updateFollowStatus(followStatus);

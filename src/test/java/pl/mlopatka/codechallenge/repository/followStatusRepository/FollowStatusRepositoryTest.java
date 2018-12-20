@@ -3,6 +3,7 @@ package pl.mlopatka.codechallenge.repository.followStatusRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import pl.mlopatka.codechallenge.dto.FollowStatusDto;
 import pl.mlopatka.codechallenge.model.FollowStatus;
 
 import java.util.HashSet;
@@ -22,9 +23,9 @@ public class FollowStatusRepositoryTest {
     @Test
     public void shouldAddFollowStatusToCollection() {
         //given
-        FollowStatus follow = new FollowStatus("User1", "User2", true);
+        FollowStatusDto follow = new FollowStatusDto("User1", "User2", true);
         Set<FollowStatus> expectedCollection = new HashSet<>();
-        expectedCollection.add(new FollowStatus("User1", "User2", true));
+        expectedCollection.add(new FollowStatus(0, "User1", "User2", true));
 
         //when
         repository.updateFollowStatus(follow);
@@ -36,7 +37,8 @@ public class FollowStatusRepositoryTest {
     @Test
     public void shouldRemoveFollowStatusFromCollection() {
         //given
-        FollowStatus follow = new FollowStatus("User1", "User2", false);
+        FollowStatusDto follow = new FollowStatusDto("User1", "User2", false);
+        actualFollowStatusCollection.add(new FollowStatus(0, "User1", "User2", true));
         Set<FollowStatus> expectedCollection = new HashSet<>();
 
         //when
@@ -49,8 +51,8 @@ public class FollowStatusRepositoryTest {
     @Test
     public void shouldReturnValidListOfNicknames() {
         //given
-        FollowStatus followUser1 = new FollowStatus("User", "User1", false);
-        FollowStatus followUser2 = new FollowStatus("User", "User2", false);
+        FollowStatus followUser1 = new FollowStatus(0, "User", "User1", false);
+        FollowStatus followUser2 = new FollowStatus(1, "User", "User2", false);
         actualFollowStatusCollection.add(followUser1);
         actualFollowStatusCollection.add(followUser2);
 

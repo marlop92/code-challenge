@@ -1,12 +1,12 @@
 package pl.mlopatka.codechallenge.repository.followStatusRepository;
 
-import pl.mlopatka.codechallenge.model.FollowStatus;
+import pl.mlopatka.codechallenge.dto.FollowStatusDto;
 
 import java.util.Set;
 
 public interface FollowStatusRepository {
 
-    void updateFollowStatus(FollowStatus followStatus);
+    void updateFollowStatus(FollowStatusDto followStatus);
 
     Set<String> getFollowedUsersNicknames(String nickname);
 }
